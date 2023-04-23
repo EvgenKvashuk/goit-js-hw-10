@@ -14,3 +14,4 @@ import Notiflix from 'notiflix';
 fetch ('https://restcountries.com/v3.1/name/Colombia').then(data => {
     console.log(data)
 })
+
