@@ -4,11 +4,8 @@ import Notiflix from 'notiflix';
 const DEBOUNCE_DELAY = 300;
 const refs = {
     input: document.querySelector("#search-box"),
-    list: document.querySelector('.markup'),
+    countryInfo: document.querySelector(".country-info"),
     countryList: document.querySelector(".country-list"),
-};
-
-function markupC() {
 };
 
 refs.input.addEventListener('input', (evt) => {
@@ -28,8 +25,45 @@ refs.input.addEventListener('input', (evt) => {
             })
     }
 
-
+    markupC();
 });
 
 
 
+
+// function markupC(countriItem) {
+//     return inputName
+//         .map(({ name, capital, population, flags, languages }) => {
+//             return  `<img src=" " alt="" class="" >
+//             <h1 class="name_js">Name:</h1>
+//             <p class="capital_js">Capital:</p>
+//             <p class="population_js">Population:</p>
+//             <p class="languages_js">Languages:</p>`;
+//         })
+//         .join("");
+// }
+
+
+
+
+
+
+
+function createGalleryCardMarkup(galleryItem) {
+    return galleryItems
+        .map(({ preview, original, description }) => {
+            return `<div class="gallery__item">
+                <a class="gallery__link" href="${original}">
+                    <img
+                        class="gallery__image"
+                        src="${preview}"
+                        data-source="${original}"
+                        alt="${description}"
+                    />
+                </a>
+            </div>`;
+        })
+        .join("");
+};
+
+createGalleryCardMarkup();
