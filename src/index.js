@@ -8,6 +8,23 @@ const refs = {
     countryList: document.querySelector(".country-list"),
 };
 
+
+// function markupC(countriItem) {
+const newTechnologies = ["React", "TypeScript", "Node.js"];
+const markup = newTechnologies
+    .map((technology) =>
+        `<img src=" " alt="" class="" >
+              <h1 class="name_js">Name:</h1>
+              <p class="capital_js">Capital:</p>
+              <p class="population_js">Population:</p>
+              <p class="languages_js">Languages:</p>`)
+    .join("");
+
+    refs.countryInfo.insertAdjacentHTML("afterbegin", markup);
+// };
+
+
+
 refs.input.addEventListener('input', (evt) => {
     const inputName = refs.input.value
 
@@ -25,45 +42,4 @@ refs.input.addEventListener('input', (evt) => {
             })
     }
 
-    markupC();
 });
-
-
-
-
-// function markupC(countriItem) {
-//     return inputName
-//         .map(({ name, capital, population, flags, languages }) => {
-//             return  `<img src=" " alt="" class="" >
-//             <h1 class="name_js">Name:</h1>
-//             <p class="capital_js">Capital:</p>
-//             <p class="population_js">Population:</p>
-//             <p class="languages_js">Languages:</p>`;
-//         })
-//         .join("");
-// }
-
-
-
-
-
-
-
-function createGalleryCardMarkup(galleryItem) {
-    return galleryItems
-        .map(({ preview, original, description }) => {
-            return `<div class="gallery__item">
-                <a class="gallery__link" href="${original}">
-                    <img
-                        class="gallery__image"
-                        src="${preview}"
-                        data-source="${original}"
-                        alt="${description}"
-                    />
-                </a>
-            </div>`;
-        })
-        .join("");
-};
-
-createGalleryCardMarkup();
