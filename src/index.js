@@ -8,24 +8,25 @@ const refs = {
     countryList: document.querySelector(".country-list"),
 };
 
-
-// function markupC(countriItem) {
-const newTechnologies = ["React", "TypeScript", "Node.js"];
-const markup = newTechnologies
-    .map((technology) =>
-        `<img src=" " alt="" class="" >
-              <h1 class="name_js">Name:</h1>
-              <p class="capital_js">Capital:</p>
-              <p class="population_js">Population:</p>
-              <p class="languages_js">Languages:</p>`)
-    .join("");
-
-    refs.countryInfo.insertAdjacentHTML("afterbegin", markup);
-// };
-
+// for one found countrie
+function markupC() {
+    return data.map(
+        ({ flags, name, capital, population, lenguages }) =>
+            `
+            <img src="${flags.svg}" alt="flags" class="" >
+            <h1 class="name_js">Name:${name.official}</h1>
+            <p class="capital_js">Capital:${capital}</p>
+            <p class="population_js">Population:${population}</p>
+            <p class="languages_js">Languages:${lenguages}</p>
+            `
+    );
+};
 
 
-refs.input.addEventListener('input', (evt) => {
+// for biger then ten results in search results
+
+
+const data = refs.input.addEventListener('input', (evt) => {
     const inputName = refs.input.value
 
     if (inputName !== "") {
@@ -33,13 +34,17 @@ refs.input.addEventListener('input', (evt) => {
             .then(respone => {
                 return respone.json();
             })
-            .then(nameCountri => {
-                // console.log(nameCountri)
-                console.log(nameCountri[0])
-                // console.log(nameCountri[0].name.official)
+            .then(nameCountris => {
+                if (nameCountris.length > 10) {
+                    Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+                } else {
+
+                }
             })
             .then(name => {
             })
+
+ 
     }
 
 });
