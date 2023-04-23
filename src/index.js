@@ -8,21 +8,28 @@ const refs = {
     countryList: document.querySelector(".country-list"),
 };
 
-// function markupC() {};
+function markupC() {
+};
 
 refs.input.addEventListener('input', (evt) => {
     const inputName = refs.input.value
 
-    fetch(`https://restcountries.com/v3.1/name/${inputName}`)
-        .then(respone => {
-            return respone.json();
-        })
-        .then(nameCountri => {
-            console.log(nameCountri.name)
-        })
-        .then(name => {
-        })
+    if (inputName !== "") {
+        fetch(`https://restcountries.com/v3.1/name/${inputName}?fields=name,capital,population,flags,languages`)
+            .then(respone => {
+                return respone.json();
+            })
+            .then(nameCountri => {
+                // console.log(nameCountri)
+                console.log(nameCountri[0])
+                // console.log(nameCountri[0].name.official)
+            })
+            .then(name => {
+            })
+    }
+
 
 });
+
 
 
