@@ -8,7 +8,6 @@ const refs = {
     countryList: document.querySelector(".country-list"),
 };
 
-// for one found countrie
 function markupC() {
     return data.map(
         ({ flags, name, capital, population, lenguages }) =>
@@ -22,10 +21,6 @@ function markupC() {
     );
 };
 
-
-// for biger then ten results in search results
-
-
 const data = refs.input.addEventListener('input', (evt) => {
     const inputName = refs.input.value
 
@@ -34,17 +29,13 @@ const data = refs.input.addEventListener('input', (evt) => {
             .then(respone => {
                 return respone.json();
             })
-            .then(nameCountris => {
-                if (nameCountris.length > 10) {
+            .then(countris => {
+                if (countris.length > 10) {
                     Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
-                } else {
-
+                    return;
                 }
+                markupC(countris)
             })
-            .then(name => {
-            })
-
- 
     }
 
 });
