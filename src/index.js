@@ -12,13 +12,14 @@ import Notiflix from 'notiflix';
 
 
 const r = fetch ('https://restcountries.com/v3.1/name/Colombia')
-console.log(r)
-// .then(response => {
-// return response.json()
-// })
-// .then(data => {
+.then(response => {
+return response.json()
+})
+.then(data => {
 
-// })
-// .catch(error => {
+})
+.catch(error => {
     
-// })
+})
+
+console.log(r)
