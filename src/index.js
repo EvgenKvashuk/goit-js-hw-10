@@ -38,18 +38,18 @@ function markupC(data) {
 
     if (data.length>1) {
         const markup = data
-        .map(({capital, flags}) => `<li class="list-item new"><img src="${flags.svg}" alt="" width="40" class="flag">${capital}</li>`)
+        .map(({capital}) => `<li class="list-item new">${capital}</li>`)
         .join("");
 
-        refs.countryInfo.innerHTML = markup;
+    refs.countryList.insertAdjacentHTML("afterbegin", markup);
     }
 
     if (data.length=1) {
         const markup = data
-        .map(({capital, flags}) => `<li class="list-item new"><img src="${flags.svg}" alt="" width="40" class="flag">${capital}</li>`)
+        .map(({capital}) => `<li class="list-item new">${capital}</li>`)
         .join("");
 
-    refs.countryInfo.innerHTML = markup;
+    refs.countryInfo.insertAdjacentHTML("afterbegin", markup);
     }
 
 }
