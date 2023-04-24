@@ -36,20 +36,28 @@ refs.input.addEventListener('input', (evt) => {
 function markupC(data) {
     console.log(data)
 
-    if (data.length>1) {
+    if (data.length > 1) {
         const markup = data
-        .map(({capital}) => `<li class="list-item new">${capital}</li>`)
-        .join("");
+            .map(({ capital , flags}) =>
+                `<li class="country-item"><img src="${flags.svg}" alt="" width="40">${capital}</li>`)
+            .join("");
 
-    refs.countryList.insertAdjacentHTML("afterbegin", markup);
+        refs.countryList.insertAdjacentHTML("afterbegin", markup);
     }
 
-    if (data.length=1) {
+    if (data.length = 1) {
         const markup = data
-        .map(({capital}) => `<li class="list-item new">${capital}</li>`)
-        .join("");
+            .map(({ name, capital, population, flags, languages }) => `    
+        <img src="${flags.svg}" alt="" width="40">
+        <h2>${name.official}</h2>
+        <ul>
+          <li>Capital: ${capital}</li>
+          <li>Population: ${population}</li>
+          <li>Lanquages: ${languages}</li>
+        </ul>`)
+            .join("");
 
-    refs.countryInfo.insertAdjacentHTML("afterbegin", markup);
+        refs.countryInfo.insertAdjacentHTML("afterbegin", markup);
     }
 
 }
