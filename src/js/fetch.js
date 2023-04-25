@@ -1,26 +1,28 @@
-export function fetchCountries(name) {
+import Notiflix from 'notiflix';
+import markupC from './markup';
 
-refs.input.addEventListener(
-    'input', (evt) => {
-    const inputName = refs.input.value
 
-    fetch(`https://restcountries.com/v3.1/name/${inputName}?fields=name,capital,population,flags,languages`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.length > 10) {
-                Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
-                return;
-            }
-            markupC(data)
-        })
-        .catch(error => {
-            Notiflix.Notify.failure('Oops, there is no country with that name');
-        });
+export default function fetchCountries(name) {
 
+// Rest Countries v2
+const FIELDS = "name,capital,population,flags,languages";
+const URL = `https://restcountries.com/v3.1/name/${name}?fields=${FIELDS}`;
+
+fetch(URL)
+.then(response => {
+    if (!response.ok) {
+        throw new Error(response.status);
+    }
+    return response.json();
+})
+.then(data => {
+    if (data.length > 10) {
+        Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+        return;
+    }
+    markupC(data)
+})
+.catch(error => {
+    Notiflix.Notify.failure('Oops, there is no country with that name');
 });
-}
+};
