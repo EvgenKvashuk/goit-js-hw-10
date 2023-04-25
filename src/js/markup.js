@@ -7,15 +7,6 @@ export default function markupC(data) {
         marcupInfoJs: document.querySelector('.marcup-info-js')
     }
 
-    if (data.length > 2) {
-        const markup = data
-            .map(({ capital, flags }) =>
-                `<li class="country-item"><img src="${flags.svg}" alt="" width="40">${capital}</li>`)
-            .join("");
-
-        refs.countryList.insertAdjacentHTML("afterbegin", markup);
-    };
-
     if (data.length = 1) {
         const markup = data
             .map(({ name, capital, population, flags, languages }) => ` 
@@ -35,6 +26,25 @@ export default function markupC(data) {
         refs.countryInfo.insertAdjacentHTML("afterbegin", markup);
 
         // refs.countryList.remove();
+        return
     }
+
+    if (data.length > 2) {
+        const markup = data
+            .map(({ capital, flags }) =>
+                `<li class="country-item"><img src="${flags.svg}" alt="" width="40">${capital}</li>`)
+            .join("");
+
+        refs.countryList.insertAdjacentHTML("afterbegin", markup);
+        refs.countryInfo.remove();
+    };
+
+    if (data.length === 0) {
+        refs.countryInfo.remove();
+
+        refs.countryList.remove();
+    }
+
+
 };
 

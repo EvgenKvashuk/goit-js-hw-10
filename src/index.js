@@ -1,16 +1,9 @@
 // залишилось реалізувати:
 
-// дебаунс
 
-// перемикання між інтерфейсом для результатів декількох країн та однієї
-// очишення інтерфейсу якщо поле пошику очищається - elem.remove();.
-// Якщо довжина отриманого фетча один елемент тоді видалити елементи рендеру
-
-// описати стілі для розмітки
-
-
-
-
+// перемикання між інтерфейсом
+// elem.remove();?
+// Якщо довжина отриманого фетча один елемент тоді видалити елементи рендеру з списком країн
 
 import './css/styles.css';
 import debounce from 'lodash.debounce';
@@ -23,7 +16,8 @@ const refs = {
     input: document.querySelector("#search-box"),
 };
 
-refs.input.addEventListener('input', (evt) => {
+refs.input.addEventListener('input', debounce(evt => {
     const name = refs.input.value.trim()
-    fetchCountries(name)
-});
+    // fetchCountries(name)
+    debounce(fetchCountries(name), DEBOUNCE_DELAY)
+}, DEBOUNCE_DELAY));
