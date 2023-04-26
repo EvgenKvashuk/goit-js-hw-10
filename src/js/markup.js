@@ -34,4 +34,9 @@ export default function markupC(data) {
 
         refs.countryList.insertAdjacentHTML("afterbegin", markup);
     };
+
+    if (data.length > 10) {
+        refs.countryList.innerHTML = '';
+        refs.countryInfo.innerHTML = '';
+    };
 };

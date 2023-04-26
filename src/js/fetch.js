@@ -8,6 +8,11 @@ export default function fetchCountries(name) {
 const FIELDS = "name,capital,population,flags,languages";
 const URL = `https://restcountries.com/v3.1/name/${name}?fields=${FIELDS}`;
 
+const refs = {
+    countryList: document.querySelector(".country-list"),
+    countryInfo: document.querySelector(".country-info"),
+};
+
 fetch(URL)
 .then(response => {
     if (!response.ok) {
@@ -18,6 +23,10 @@ fetch(URL)
 .then(data => {
     if (data.length > 10) {
         Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+
+        refs.countryList.innerHTML = '';
+        refs.countryInfo.innerHTML = '';
+        
         return;
     }
     markupC(data)
