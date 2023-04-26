@@ -3,13 +3,12 @@ export default function markupC(data) {
     const refs = {
         countryList: document.querySelector(".country-list"),
         countryInfo: document.querySelector(".country-info"),
-        marcupInfoJs: document.querySelector('.marcup-info-js')
     };
 
     refs.countryList.innerHTML = '';
     refs.countryInfo.innerHTML = '';
 
-    if (data.length < 2) {
+    if (data.length > 0 && data.length < 2) {
         const markup = data
             .map(({ name, capital, population, flags, languages }) => ` 
             <div class="marcup-info-js"> 
@@ -34,5 +33,5 @@ export default function markupC(data) {
             .join("");
 
         refs.countryList.insertAdjacentHTML("afterbegin", markup);
-    } 
+    };
 };
