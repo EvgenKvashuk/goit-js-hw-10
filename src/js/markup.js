@@ -1,12 +1,10 @@
 export default function markupC(data) {
     console.log(data)
-
     const refs = {
         countryList: document.querySelector(".country-list"),
         countryInfo: document.querySelector(".country-info"),
         marcupInfoJs: document.querySelector('.marcup-info-js')
-    }
-
+    };
 
     refs.countryList.innerHTML = '';
     refs.countryInfo.innerHTML = '';
@@ -27,7 +25,7 @@ export default function markupC(data) {
             </div>`)
             .join("");
         refs.countryInfo.insertAdjacentHTML("afterbegin", markup);
-    }
+    };
 
     if (data.length > 1 && data.length < 10) {
         const markup = data
@@ -36,6 +34,5 @@ export default function markupC(data) {
             .join("");
 
         refs.countryList.insertAdjacentHTML("afterbegin", markup);
-    };
+    } 
 };
-
