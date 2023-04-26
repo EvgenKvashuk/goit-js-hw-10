@@ -20,7 +20,7 @@ export default function markupC(data) {
             <ul class="info-list">
             <li>Capital: ${capital}</li>
             <li>Population: ${population}</li>
-            <li>Lanquages: ${languages}</li>
+            <li>Lanquages: ${Object.values(languages).join(', ')}</li>
             </ul>
             </div>`)
             .join("");
