@@ -7,7 +7,11 @@ export default function markupC(data) {
         marcupInfoJs: document.querySelector('.marcup-info-js')
     }
 
-    if (data.length = 1) {
+
+    refs.countryList.innerHTML = '';
+    refs.countryInfo.innerHTML = '';
+
+    if (data.length < 2) {
         const markup = data
             .map(({ name, capital, population, flags, languages }) => ` 
             <div class="marcup-info-js"> 
@@ -22,29 +26,16 @@ export default function markupC(data) {
             </ul>
             </div>`)
             .join("");
-
         refs.countryInfo.insertAdjacentHTML("afterbegin", markup);
-
-        // refs.countryList.remove();
-        return
     }
 
-    if (data.length > 2) {
+    if (data.length > 1 && data.length < 10) {
         const markup = data
-            .map(({ capital, flags }) =>
-                `<li class="country-item"><img src="${flags.svg}" alt="" width="40">${capital}</li>`)
+            .map(({ name, flags }) =>
+                `<li class="country-item"><img src="${flags.svg}" alt="" width="40">${name.official}</li>`)
             .join("");
 
         refs.countryList.insertAdjacentHTML("afterbegin", markup);
-        refs.countryInfo.remove();
     };
-
-    if (data.length === 0) {
-        refs.countryInfo.remove();
-
-        refs.countryList.remove();
-    }
-
-
 };
 

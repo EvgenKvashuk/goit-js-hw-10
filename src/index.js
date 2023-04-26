@@ -18,6 +18,6 @@ const refs = {
 
 refs.input.addEventListener('input', debounce(evt => {
     const name = refs.input.value.trim()
-    // fetchCountries(name)
+
     debounce(fetchCountries(name), DEBOUNCE_DELAY)
 }, DEBOUNCE_DELAY));
