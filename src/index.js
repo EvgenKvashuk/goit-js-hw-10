@@ -1,3 +1,4 @@
+
 import './css/styles.css';
 import debounce from 'lodash.debounce';
 import fetchCountries from './js/fetch';
@@ -18,4 +19,5 @@ refs.input.addEventListener('input', debounce(evt => {
     };
 
     fetchCountries(name)
+    
 }, DEBOUNCE_DELAY));
