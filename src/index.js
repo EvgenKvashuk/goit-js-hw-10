@@ -22,5 +22,5 @@ input.addEventListener('input', debounce(evt => {
         console.log('пусто')
     };
 
-    debounce(fetchCountries(name), DEBOUNCE_DELAY)
+    fetchCountries(name)
 }, DEBOUNCE_DELAY));
