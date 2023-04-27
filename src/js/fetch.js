@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
-import markupC from './markup';
+import markupC from './markup.js';
+import { refs } from './refs.js';
 
 
 export default function fetchCountries(name) {
@@ -7,11 +8,6 @@ export default function fetchCountries(name) {
 // Rest Countries v2
 const FIELDS = "name,capital,population,flags,languages";
 const URL = `https://restcountries.com/v3.1/name/${name}?fields=${FIELDS}`;
-
-const refs = {
-    countryList: document.querySelector(".country-list"),
-    countryInfo: document.querySelector(".country-info"),
-};
 
 fetch(URL)
 .then(response => {

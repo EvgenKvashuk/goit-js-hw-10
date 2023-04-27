@@ -1,17 +1,12 @@
 import './css/styles.css';
 import debounce from 'lodash.debounce';
 import fetchCountries from './js/fetch';
+import { refs } from './js/refs';
 
 const DEBOUNCE_DELAY = 300;
 
-const input = document.querySelector("#search-box");
-const refs = {
-    countryList: document.querySelector(".country-list"),
-    countryInfo: document.querySelector(".country-info"),
-};
-
-input.addEventListener('input', debounce(evt => {
-    const name = input.value.trim()
+refs.input.addEventListener('input', debounce(evt => {
+    const name = refs.input.value.trim()
 
     console.log(name)
 

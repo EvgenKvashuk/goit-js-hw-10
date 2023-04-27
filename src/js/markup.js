@@ -1,9 +1,7 @@
+import { refs } from "./refs";
+
 export default function markupC(data) {
     console.log(data)
-    const refs = {
-        countryList: document.querySelector(".country-list"),
-        countryInfo: document.querySelector(".country-info"),
-    };
 
     refs.countryList.innerHTML = '';
     refs.countryInfo.innerHTML = '';
